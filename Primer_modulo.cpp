@@ -1,6 +1,9 @@
 #include <iostream>
 #include <string>
 using namespace std;
+
+
+// Estructuras para productos, clientes y ventas (listas enlazadas)
 struct Producto {
  int codigo;
  string nombre;
@@ -15,6 +18,9 @@ struct Venta {
  string detalle;
  Venta* sig;
 };
+
+
+// Agrega un producto al inicio de la lista
 void agregarProducto(Producto*& lista) {
  Producto* nuevo = new Producto();
  cout << "Codigo: "; cin >> nuevo->codigo;
@@ -25,6 +31,9 @@ void agregarProducto(Producto*& lista) {
  lista = nuevo;
  cout << "Producto agregado.\n";
 }
+
+
+// Muestra todos los productos
 void mostrarProductos(Producto* lista) {
  Producto* aux = lista;
  while (aux != NULL) {
@@ -32,6 +41,9 @@ void mostrarProductos(Producto* lista) {
  aux = aux->sig;
  }
 }
+
+
+// Ingresa un cliente al final de la cola
 
 void encolarCliente(Cliente*& frente, Cliente*& final) {
  Cliente* nuevo = new Cliente();
@@ -47,6 +59,8 @@ void encolarCliente(Cliente*& frente, Cliente*& final) {
  }
  cout << "Cliente registrado.\n";
 }
+
+// Registra una venta en la pila
 void registrarVenta(Venta*& tope) {
  Venta* nueva = new Venta();
  cin.ignore();
@@ -56,6 +70,10 @@ void registrarVenta(Venta*& tope) {
  tope = nueva;
  cout << "Venta registrada.\n";
 }
+
+
+
+// Menú principal
 void menu() {
  Producto* lista = NULL;
  Cliente* frente = NULL;
