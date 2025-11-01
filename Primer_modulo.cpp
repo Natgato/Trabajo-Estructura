@@ -32,3 +32,50 @@ void mostrarProductos(Producto* lista) {
  aux = aux->sig;
  }
 }
+
+void encolarCliente(Cliente*& frente, Cliente*& final) {
+ Cliente* nuevo = new Cliente();
+ cin.ignore();
+ cout << "Nombre del cliente: ";
+ getline(cin, nuevo->nombre);
+ nuevo->sig = NULL;
+ if (final == NULL) {
+ frente = final = nuevo;
+ } else {
+ final->sig = nuevo;
+ final = nuevo;
+ }
+ cout << "Cliente registrado.\n";
+}
+void registrarVenta(Venta*& tope) {
+ Venta* nueva = new Venta();
+ cin.ignore();
+ cout << "Detalle de la venta: ";
+ getline(cin, nueva->detalle);
+ nueva->sig = tope;
+ tope = nueva;
+ cout << "Venta registrada.\n";
+}
+void menu() {
+ Producto* lista = NULL;
+ Cliente* frente = NULL;
+ Cliente* final = NULL;
+ Venta* tope = NULL;
+ int opcion;
+ do {
+ cout << "\n1. Agregar producto\n2. Mostrar productos\n3. Registrar cliente\n4. Registrar venta\n0.
+Salir\n";
+ cout << "Opcion: ";
+ cin >> opcion;
+ switch (opcion) {
+ case 1: agregarProducto(lista); break;
+ case 2: mostrarProductos(lista); break;
+ case 3: encolarCliente(frente, final); break;
+ case 4: registrarVenta(tope); break;
+ case 0: cout << "Fin del programa.\n"; break;
+ }
+ } while (opcion != 0);
+}
+int main() {
+ menu();
+ return 0;
